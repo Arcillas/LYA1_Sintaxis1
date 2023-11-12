@@ -131,7 +131,6 @@ namespace LYA1_Sintaxis1
             match(")");
             match(";");
 
-
         }
         //    Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
         private void Scanf()
