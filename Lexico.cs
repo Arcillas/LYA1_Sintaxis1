@@ -134,8 +134,8 @@ namespace LYA1_Sintaxis1
                 case 10: setClasificacion(Tipos.FinSentencia); break;
                 case 11: setClasificacion(Tipos.Caracter); break;
                 case 12: setClasificacion(Tipos.Caracter); break;
-                case 13: setClasificacion(Tipos.OperadorLogico); break;
-                case 14: setClasificacion(Tipos.OperadorLogico); break;
+                case 13: setClasificacion(Tipos.OpLogico); break;
+                case 14: setClasificacion(Tipos.OpLogico); break;
                 case 15: setClasificacion(Tipos.OperadorRelacional); break;
                 case 16: setClasificacion(Tipos.OperadorRelacional); break;
                 case 17: setClasificacion(Tipos.OperadorRelacional); break;
@@ -144,7 +144,7 @@ namespace LYA1_Sintaxis1
                 case 21: setClasificacion(Tipos.IncrementoTermino); break;
                 case 22: setClasificacion(Tipos.OperadorFactor); break;
                 case 23: setClasificacion(Tipos.IncrementoFactor); break;
-                case 24: setClasificacion(Tipos.OperadorTernario); break;
+                case 24: setClasificacion(Tipos.OpTernario); break;
                 case 25: setClasificacion(Tipos.Cadena); break;
                 case 27: setClasificacion(Tipos.Caracter); break;
                 case 28: setClasificacion(Tipos.OperadorFactor); break;
@@ -188,7 +188,7 @@ namespace LYA1_Sintaxis1
                     throw new Error("Lexico: Se espera un \" ",log);
                 
             }
-            else
+                        else
             {
                 setContenido(buffer);
                 if (getClasificacion() == Tipos.Identificador)
@@ -207,13 +207,12 @@ namespace LYA1_Sintaxis1
                         case "else":
                             setClasificacion(Tipos.reservada);
                             break;
-                        
+
                     }
                 }
-                log.WriteLine("[" + getContenido() + "]" + " = " + getClasificacion());
-            }
             setContenido(buffer);
             log.WriteLine("[" + getContenido() + "] : " + getClasificacion());
+            }
         }
         public bool FinArchivo()
         {

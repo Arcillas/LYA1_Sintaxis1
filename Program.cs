@@ -11,17 +11,20 @@ namespace LYA1_Sintaxis1
         {
             try
             {
-                using (Lexico L = new Lexico())
+                using (Lenguaje L = new Lenguaje())
                 {
+                    L.Programa();
+                    /* 
                     while (!L.FinArchivo())
                     {
                         L.nextToken();
                     }
+                    */
                 }
             } 
             catch (Exception e)
             {
-                Console.WriteLine("Error: "+e.Message);
+                Console.WriteLine("Error "+e.Message);
             }
         }
     }

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-/*
-    Requerimiento 1: Printf -> printf(cadena(, Identificador)?);
-    Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
-*/
 
 namespace LYA1_Sintaxis1
 {
@@ -121,21 +117,31 @@ namespace LYA1_Sintaxis1
                 Asignacion();
             }
         }
-        //Printf -> printf(cadena);
+        //    Requerimiento 1: Printf -> printf(cadena(, Identificador)?);
         private void Printf()
         {
             match("printf");
             match("(");
             match(Tipos.Cadena);
+            while (getContenido() == ",")
+            {
+                match(",");
+                match(Tipos.Identificador);
+            }
             match(")");
             match(";");
+
+
         }
-        //Scanf -> scanf(cadena);
+        //    Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
         private void Scanf()
         {
             match("scanf");
             match("(");
             match(Tipos.Cadena);
+            match(",");
+            match("&");
+            match(Tipos.Identificador);
             match(")");
             match(";");
         }

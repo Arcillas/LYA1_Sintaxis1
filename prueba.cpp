@@ -6,12 +6,13 @@
 char  a;
 int   a,b,c,d,radio;
 float x,y,z;
-char  w;
+char  xd;
 
 void main()
 {
     printf("\nHola mundo");
     printf("\n============");
     printf("\nRadio = ");
-    scanf("%i");
+    printf("Radio %i, y altura: %i", x ,zs);
+    scanf("%i",&radio);
 }
