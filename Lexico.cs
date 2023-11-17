@@ -13,6 +13,7 @@ namespace LYA1_Sintaxis1
         const int E = -2;
         private StreamReader archivo;
         protected StreamWriter log;
+        protected int line;
 
         int[,] TRAND =  
         {
@@ -42,13 +43,13 @@ namespace LYA1_Sintaxis1
             { F	,F	,F	,F	,F	,23	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 22
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 23
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 24
-            { 25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,26	,25	,25	,E	,25	,25},   // 25
+            { 25,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,26	,25	,25	,E	,25	,25},   // 25
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 26
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 27
             { F	,F	,F	,F	,F	,23	,F	,F	,F	,F	,F	,F	,F	,F	,F	,30	,29	,F	,F	,F	,F	,F	,F	,F },   // 28
-            { 29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,0	,29},   // 29
-            { 30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,30	,30	,30	,30	,30	,E	,30	,30},   // 30
-            { 30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,0	,30	,30	,30	,30	,E	,30	,30},   // 31
+            { 29,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,0	,29},   // 29
+            { 30,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,30	,30	,30	,30	,30	,E	,30	,30},   // 30
+            { 30,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,0	,30	,30	,30	,30	,E	,30	,30},   // 31
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 32
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F }    // 33
         //   WS ,L  ,D  ,.  ,E  ,=  ,;  ,&  ,|  ,!  ,<  ,>  ,+  ,-  ,%  ,*  ,/  ,?  ,“  ,{  ,}  ,EOF,EOL,LMD
@@ -60,12 +61,14 @@ namespace LYA1_Sintaxis1
             archivo = new StreamReader("prueba.cpp");
             log = new StreamWriter("prueba.log");
             log.AutoFlush = true;
+            line = 1;
         }
         public Lexico(string nombre)
         {
             archivo = new StreamReader(nombre);
             log = new StreamWriter("prueba.log");
             log.AutoFlush = true;
+            line = 1;
         }
         public void Dispose()
         {
@@ -177,6 +180,9 @@ namespace LYA1_Sintaxis1
                     {
                         buffer = "";
                     }
+                    
+                    if (c ==  '\n') line++;
+                    
                     archivo.Read();
                 }
             }
@@ -188,7 +194,7 @@ namespace LYA1_Sintaxis1
                     throw new Error("Lexico: Se espera un \" ",log);
                 
             }
-                        else
+            else
             {
                 setContenido(buffer);
                 if (getClasificacion() == Tipos.Identificador)

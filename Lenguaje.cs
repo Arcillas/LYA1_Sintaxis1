@@ -220,7 +220,18 @@ namespace LYA1_Sintaxis1
         //Incremento -> Identificador ++ | --
         private void Incremento()
         {
-
+          match(Tipos.Identificador); 
+          if (getClasificacion() == Tipos.IncrementoTermino)
+          {
+              match(Tipos.IncrementoTermino);
+          }
+          else if (getClasificacion() == Tipos.IncrementoFactor)
+          {
+              match(Tipos.IncrementoFactor);
+          }
+          
+          Expresion();
+          match(";");
         }
         //Main      -> void main() bloqueInstrucciones
         private void Main()
@@ -233,7 +244,7 @@ namespace LYA1_Sintaxis1
         }
         //Expresion -> Termino MasTermino
         private void Expresion()
-        {
+        {   
             Termino();
             MasTermino();
         }
