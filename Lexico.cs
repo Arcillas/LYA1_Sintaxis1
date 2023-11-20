@@ -18,7 +18,7 @@ namespace LYA1_Sintaxis1
         int[,] TRAND =  
         {
         //   WS ,L  ,D  ,.  ,E  ,=  ,;  ,&  ,|  ,!  ,<  ,>  ,+  ,-  ,%  ,*  ,/  ,?  ,“  ,{  ,}  ,EOF,EOL,LMD
-            { 0	,1	,2	,27	,1	,8	,10	,11	,12	,13	,16	,17	,19	,20	,22	,22	,28	,24	,25	,32	,33	,F	,0	,27},   // 0
+            { 0	,1	,2	,27	,1	,8	,10	,11	,12	,13	,16	,17	,19	,20	,22	,22	,28	,24	,25	,32,33	,F	,0	,27},   // 0
             { F	,1	,1	,F	,1	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 1
             { F	,F	,2	,3	,5	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 2
             { E	,E	,4	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E	,E },   // 3
@@ -37,21 +37,23 @@ namespace LYA1_Sintaxis1
             { F	,F	,F	,F	,F	,18	,F	,F	,F	,F	,F	,18  ,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 16
             { F	,F	,F	,F	,F	,18	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 17
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 18
-            { F	,F	,F	,F	,F	,21	,F	,F	,F	,F	,F	,F	,21	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 19
-            { F	,F	,F	,F	,F	,21	,F	,F	,F	,F	,F	,F	,F	,21	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 20
+            { F	,F	,F	,F	,F	,21	,F	,F	,F	,F	,F	,F	,34	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 19
+            { F	,F	,F	,F	,F	,21	,F	,F	,F	,F	,F	,F	,F	,35	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 20
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 21
             { F	,F	,F	,F	,F	,23	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 22
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 23
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 24
-            { 25,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,26	,25	,25	,E	,25	,25},   // 25
+            { 25,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,25	,26,25	,25	,E	,25	,25},   // 25
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 26
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 27
             { F	,F	,F	,F	,F	,23	,F	,F	,F	,F	,F	,F	,F	,F	,F	,30	,29	,F	,F	,F	,F	,F	,F	,F },   // 28
-            { 29,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,0	,29},   // 29
-            { 30,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,30	,30	,30	,30	,30	,E	,30	,30},   // 30
-            { 30,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,0	,30	,30	,30	,30	,E	,30	,30},   // 31
+            { 29,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29	,29,29	,29	,29	,0	,29},   // 29
+            { 30,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,30	,30	,30,30	,30	,E	,30	,30},   // 30
+            { 30,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,30	,31	,0	,30	,30,30	,30	,E	,30	,30},   // 31
             { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 32
-            { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F }    // 33
+            { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 33
+            { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F },   // 34
+            { F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F	,F }    // 35
         //   WS ,L  ,D  ,.  ,E  ,=  ,;  ,&  ,|  ,!  ,<  ,>  ,+  ,-  ,%  ,*  ,/  ,?  ,“  ,{  ,}  ,EOF,EOL,LMD
 
 
@@ -137,8 +139,8 @@ namespace LYA1_Sintaxis1
                 case 10: setClasificacion(Tipos.FinSentencia); break;
                 case 11: setClasificacion(Tipos.Caracter); break;
                 case 12: setClasificacion(Tipos.Caracter); break;
-                case 13: setClasificacion(Tipos.OpLogico); break;
-                case 14: setClasificacion(Tipos.OpLogico); break;
+                case 13: setClasificacion(Tipos.OperadorLogico); break;
+                case 14: setClasificacion(Tipos.OperadorLogico); break;
                 case 15: setClasificacion(Tipos.OperadorRelacional); break;
                 case 16: setClasificacion(Tipos.OperadorRelacional); break;
                 case 17: setClasificacion(Tipos.OperadorRelacional); break;
@@ -147,12 +149,14 @@ namespace LYA1_Sintaxis1
                 case 21: setClasificacion(Tipos.IncrementoTermino); break;
                 case 22: setClasificacion(Tipos.OperadorFactor); break;
                 case 23: setClasificacion(Tipos.IncrementoFactor); break;
-                case 24: setClasificacion(Tipos.OpTernario); break;
+                case 24: setClasificacion(Tipos.OperadorTernario); break;
                 case 25: setClasificacion(Tipos.Cadena); break;
                 case 27: setClasificacion(Tipos.Caracter); break;
                 case 28: setClasificacion(Tipos.OperadorFactor); break;
                 case 32: setClasificacion(Tipos.Inicio); break;
                 case 33: setClasificacion(Tipos.Fin); break;
+                case 34: setClasificacion(Tipos.Incremento); break;
+                case 35: setClasificacion(Tipos.Decremento); break;
 
             }
         }
