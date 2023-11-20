@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 
 /*
-    Requerimiento 1: Printf -> printf(cadena(, Identificador)?);
-    Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
-    Requerimiento 3: Agregar a la Asignacion +=, -=, *=. /=, %=
-                     Ejemplo:
-                     Identificador IncrementoTermino Expresion;
-                     Identificador IncrementoFactor Expresion;
-    Requerimiento 4: Agregar el else optativo al if
-    Requerimiento 5: Indicar el número de linea de los errores
+    [*] : Requerimiento 1: Printf -> printf(cadena(, Identificador)?); 
+    [*] : Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
+    [*] : Requerimiento 3: Agregar a la Asignacion +=, -=, *=. /=, %=
+                          Ejemplo:
+                          Identificador IncrementoTermino Expresion;
+                          Identificador IncrementoFactor Expresion;
+    [] : Requerimiento 4: Agregar el else optativo al if
+    [*] : Requerimiento 5: Indicar el número de linea de los errores
 */
 
 namespace LYA1_Sintaxis1
@@ -163,14 +163,29 @@ namespace LYA1_Sintaxis1
             {
                 match(Tipos.OperadorTermino);
             }
+            else if (getClasificacion() == Tipos.OperadorFactor)
+            {
+                match(Tipos.OperadorFactor);
+            }
+            else if (getClasificacion() == Tipos.Incremento){
+                match(Tipos.Incremento);
+            }
+            else if (getClasificacion() == Tipos.Decremento)
+            {
+                match(Tipos.Decremento);
+            }
+
             else if (getClasificacion() == Tipos.IncrementoTermino)
             {
-
+                match(Tipos.IncrementoTermino);
+                Expresion();
             }
             else if (getClasificacion() == Tipos.IncrementoFactor)
             {
-
+                match(Tipos.IncrementoFactor);
+                Expresion();
             }
+
             else
             {
                 match("=");
@@ -194,6 +209,18 @@ namespace LYA1_Sintaxis1
             {
                 Instruccion();
             }
+            if(getContenido() == "else")
+            {
+                match("else");
+                if (getContenido() == "{")
+                {
+                    bloqueInstrucciones();
+                }
+                else
+                {
+                    Instruccion();
+                }
+            }
         }
         //Condicion -> Expresion operadoRelacional Expresion
         private void Condicion()
@@ -205,33 +232,70 @@ namespace LYA1_Sintaxis1
         //While -> while(Condicion) bloqueInstrucciones | Instruccion
         private void While()
         {
-
+            match("while");
+            match("(");
+            Condicion();
+            match(")");
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
         }
         //Do -> do bloqueInstrucciones | Intruccion while(Condicion);
         private void Do()
         {
-
+            match("do");
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
+            match("while");
+            match("(");
+            Condicion();
+            match(")");
+            match(";");
+            
         }
-        //For -> for(Asignacion Condicion; Incremento) BloqueInstruccones | Intruccion 
+        //For -> for(Asignacion Condicion; Incremento) BloqueInstruccones | Instruccion 
         private void For()
         {
-
+            match("for");
+            match("(");
+            Asignacion();
+            Condicion();
+            match(";");
+            Incremento();
+            match(")");
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
         }
         //Incremento -> Identificador ++ | --
         private void Incremento()
         {
-          match(Tipos.Identificador); 
-          if (getClasificacion() == Tipos.IncrementoTermino)
-          {
-              match(Tipos.IncrementoTermino);
-          }
-          else if (getClasificacion() == Tipos.IncrementoFactor)
-          {
-              match(Tipos.IncrementoFactor);
-          }
-          
-          Expresion();
-          match(";");
+            match(Tipos.Identificador);
+            if (getClasificacion() == Tipos.Incremento)
+            {
+                match(Tipos.Incremento);
+            }
+            else
+            {
+                match(Tipos.Decremento);
+            }
+
         }
         //Main      -> void main() bloqueInstrucciones
         private void Main()
@@ -262,6 +326,7 @@ namespace LYA1_Sintaxis1
         {
             Factor();
             PorFactor();
+
         }
         //PorFactor -> (OperadorFactor Factor)?
         private void PorFactor()
